@@ -5,6 +5,7 @@
 using namespace std;
 
 float tx=0,ty=0,z_dis=100,z_viewPoint= -120;
+unsigned char mainkey = 'r';
 
 GLUquadricObj *rocketBody, *rocketPlate;
 GLfloat pos[]= { -35, -8, 5, 1};
@@ -28,8 +29,8 @@ void rocket_body(){
     gluCylinder(rocketBody, 4.5, 4.5, 30, 32, 32);
 
     // gambar roket
-    glColor3f(0, 0, 0);//warna jendela
-    int windows[5]={-5, -10,-15, -20,-25};     // arah jendela
+    glColor3f(255, 0, 255);//warna jendela
+    int windows[5]={-5, -10,-15,-20,-25};     // arah jendela
     for(int i=0; i<5; i++){
         glPushMatrix ();
         glRotated(90, 0, 0, 1);
@@ -94,6 +95,7 @@ void rocket_plates(){
     glRotatef(160, 1, 0, 0);
     gluPartialDisk(rocketPlate,4.5,18, 10, 5, 0, 30);
     glPopMatrix();
+
 }
 
 //satukan roket
@@ -165,7 +167,6 @@ void stars(void){
 
 }
 
-
 //fungsi display
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -214,6 +215,7 @@ void display(void){
 
         glPopMatrix();
     }
+
     glPopMatrix();
     glutSwapBuffers();
 }
@@ -231,7 +233,7 @@ int main(int argc, char **argv){
     glutInitWindowSize(800, 600);
     glutInitWindowPosition(200, 100);
     glutCreateWindow("roket");
-    glClearColor(0, 0, 0, 1);       //warna jendela
+    glClearColor(0, 0, 0, 1);       //warna bg
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
